@@ -14,8 +14,8 @@ author:
 - Davies, T.J.
 csl: biology-letters.csl
 output:
-  html_document: default
   word_document: default
+  html_document: default
 bibliography: relgenREFS.bib
 ---
 
@@ -235,7 +235,7 @@ However, across the full range of z-scores, each of the two covariates (parasite
 
 Parasite type by transmission mode interactions are particularly driven by protozoa and viruses, and close contact and vector-borne transmission (Fig. 3); close contact transmission is associated with atypical extreme specialism in these groups and vector-borne transmission is associated with atypical generalism in these same groups. 
 
-```{r, echo=F, warning=F, message=F}
+```{r, echo=F, warning=F, message=F, fig.width=10}
 library(sjPlot)
 library(sjmisc)
 nri6$para.type<-droplevels(nri6$para.type)
