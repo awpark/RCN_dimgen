@@ -1,5 +1,14 @@
 # RCN_dimgen
+
+
 To recreate - just knit z.Rmd
+
+> knitr::render('z.Rmd')
+
+
+
+--- 
+
 Session Info below...
 R version 3.3.2 (2016-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
@@ -13,9 +22,11 @@ locale:
 attached base packages:
 [1] grid      stats     graphics  grDevices utils     datasets  methods   base     
 
+
 other attached packages:
  [1] MASS_7.3-45     reshape2_1.4.2  geiger_2.0.6    sjmisc_2.2.1    sjPlot_2.2.0    gridExtra_2.2.1 picante_1.6-2   nlme_3.1-128    vegan_2.4-1    
 [10] lattice_0.20-34 permute_0.9-4   ape_4.0         ggplot2_2.2.1  
+
 
 loaded via a namespace (and not attached):
  [1] tidyr_0.6.0        splines_3.3.2      merTools_0.3.0     modelr_0.1.0       shiny_0.14.2       assertthat_0.1     stats4_3.3.2       coin_1.1-3        
