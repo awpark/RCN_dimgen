@@ -35,6 +35,7 @@ library(geiger)
 library(MASS)
 library(ape)
 library(picante)
+library(grid)
 library(gridExtra)
 library(sjPlot)
 library(sjmisc)
@@ -309,9 +310,8 @@ sig$tmode[which(sig$tmode=="vector")]<-"Vector"
 sig$tmode<-factor(sig$tmode,levels=c("Close","Complex","Envir.","Vector"))
 sig.b<-ggplot(sig,aes(x=tmode,fill=sig))+geom_bar(position="fill")+xlab("Transmission mode")+ylab("")+scale_fill_discrete(name="Significant")+scale_fill_manual(values=c("gray","dodgerblue4"))+coord_flip()
 
-
-
 grid.arrange(sig.a,sig.b, nrow = 2)
+
 ```
 
 Figure 2. Proportion of parasites with host sets in which the hosts are more related than expected by chance, grouped by parasite type (top panel) and transmission mode (bottom panel)
@@ -370,10 +370,10 @@ p4<-sjp.grpfrq(nri6$mpd.obs.z,
 
 grid.arrange(p1$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p2$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p3$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p4$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), nrow = 2,left=textGrob("Standard effect size of mean pairwise\nPD between hosts",rot=90))
 
-
 ```
 
 Figure 3. Standard effect size of mean pairwise PD between hosts stratified by parasite type (colored bars) and presence (1) or absence (0) of each transmission mode (named subplots), indicating interactions between parasite type (particularly protozoa and viruses) and transmission mode (particularly close contact and vector-borne transmission)
+
 
 <!-- If you are okay without it being a boxplot, it might be more intuitive to just have points with error bars, and these points could be slightly jittered to represent the difference in the presence/absence of transmission mode. Perhaps use open and closed circles (or some other difference in symbols) to indicate transmission mode as well? This is just an idea.   -->
 
@@ -733,7 +733,7 @@ m.bl2<-glm.nb(n.para~tbl+n.records,data=H.metrics,link=log,maxit=100)
 
 ```
 
-```{r, results='as-is', echo=FALSE}
+```{r, results='asis', echo=FALSE}
 
 xtable(m.ed)
 xtable(m.bl)
