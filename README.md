@@ -3,7 +3,7 @@
 
 To recreate - just knit z.Rmd
 
-> knitr::render('z.Rmd')
+> rmarkdown::render('z.Rmd')
 
 
 
