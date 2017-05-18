@@ -1,0 +1,745 @@
+---
+title: "Characterizing parasite generalism illuminates patterns of host-parasite associations"
+author:
+- Park, A.W.
+- Farrell, M.J.
+- Schmidt, J.P.
+- Huang, S.
+- Dallas, T.A.
+- Pappalardo, P.
+- Drake, J.M.
+- Stephens, P.R
+- Poulin, R.
+- Nunn, C.L.
+- Davies, T.J.
+csl: procB.csl
+output:
+  word_document: default
+  html_document: default
+bibliography: relgenREFS.bib
+---
+
+## Abstract
+
+The distribution of parasites among mammalian hosts is complex and represents a differential ability or opportunity to explore host phylogeny. Using data on over 1400 parasite species that have been documented to infect between 1-81 terrestrial mammal host species, we characterize the generalism of parasites using standard effect sizes for three metrics describing host relatedness: mean pairwise phylogenetic distance (PD), maximum PD, and degree of aggregation of hosts (the tendency for the hosts of a parasite to cluster within the phylogenetic tree). We explore variation in these metrics in terms of parasite taxonomy and transmission mode. Of the multi-host parasites, the majority are generalists, with the average relatedness of their mammalian host species being roughly equivalent to that expected from a random sample of mammals. Only a minority of parasites are associated with host sets that are more related than expected by chance. However, the almost 800 parasite species associating with at least two host species exhibit pronounced trends in the degree of host relatedness, dictated by both parasite taxonomy and transmission mode; bacteria and arthropod parasites are typically the most generalist, helminths are intermediate, and viruses and protozoa are on average the most specialist. While viruses are more specialist than helminths on average, viruses show higher variance on the specialism-generalism continuum, with viruses containing some of the most generalist parasites. Transmission mode also influences the degree of parasite generalism, with closer relatedness of hosts exhibited for parasites that rely on close contact or complex life-cycle transmission involving intermediate hosts, compared to those with environmental or vector-borne transmission. Both maximum PD and degree of aggregation of hosts vary among parasites. For example, all bacteria have large maximum PD, equivalent to random host sets. However, they exhibit the least propensity to infect host clusters within this span. Instead, they appear to typically infect relatively unrelated host species. The taxonomy and transmission modes of parasites with only one known host species are broadly reflective of multi-host parasites, with rarely single-host viruses being a notable exception. Lastly, a host species' evolutionary distinctiveness is a weak predictor of the number of parasite species associated with it. Collectively, this macroecological perspective helps to generate a broad picture of how certain types of parasite and transmission mode are differentially linked with the tendency to associate with multiple host species, captured by a set of complementary metrics defining the dimensions of parasite generalism. 
+
+## Keywords
+
+Parasite, multi-host, generalism, transmission mode, phylogenetic, macroecology
+
+## Introduction
+
+Parasites that can infect a wide range of host species, i.e., generalist parasites, are often highlighted as threats to biodiversity conservation and public health due to their widespread impact and likelihood of emergence in novel hosts [@Cleaveland2001;@Cleaveland2002;@Jones2008;@Fuller2012;@KreuderJohnson2015]. Conventionally, the generalism (or, conversely, host specificity) of parasites is quantified based on the taxonomic breadth of their host species, such as the number of host species [e.g., @Poulin1992;@Pedersen2005;@Rohde1980]. Theoretical, as well as empirical, studies using such generalism metrics have provided important insights into the ecology and evolution of parasites, but lack the predictive capability regarding which host species might be subject to future emergent infectious diseases and which parasites are likely to cause them. One of challenges for prediction is to take into account how host species differ in their susceptibility to the same parasite [@Rohde1980;@Poulin2003]. The rapid development in integrating information on evolutionary history into biodiversity research [e.g., @Faith1992;@Purvis2000] has inspired recent work taking the evolutionary perspective for further understanding mechanisms underlying parasite generalism and for identifying unknown existing or potential host species [@Poulin2003;@Krasnov2004;@Poulin2011;@Stephens2016 and references therein]. For example, mammalian parasites capable of infecting multiple host species from distinctive evolutionary lineages (i.e., distant relatives in a phylogeny) are more likely to cause zoonotic disease outbreaks than others [@Cooper2012]. Here, we take this new approach of quantifying the phylogenetic relatedness among host species infected by the same parasite, i.e., a parasite’s phylogenetic generalism (or phylogenetic host specificity) and compare a diverse range of parasite taxa and transmission mode to identify factors that determine whether parasites can spread across host lineages, and in which manner. For example, parasites may exhibit patterns consistent with creeping through the host phylogeny via related hosts, taking large leaps across the host phylogeny or both.  
+
+The spread of parasites across host species has previously been shown to depend on the phylogenetic relatedness among host species [@Davies2008;@Huang2014;@Poulin2010]. Closely related host species not only shared common evolutionary history, and thus common parasites, until divergence in the more recent past than distantly related hosts [@Ricklefs2002;@Page2003], they also show higher similarity in their biology [@Harvey1996;@Freckleton2002;@Harvey1991], including characteristics like the internal physiological structure, immune responses, and behaviors whose differences can largely limit host switching [@Pfennig2000;@Longdon2011;@DeVienne2009]. However, two recent studies, using relatively restricted datasets on parasites in different mammalian clades, showed large variation in the degree of phylogenetic generalism. Most parasites infecting multiple primate hosts also appeared to be phylogenetic generalists [@Cooper2012], but for carnivores, many multi-host parasites were not constrained by host phylogeny, except helminths and viruses [@Huang2014]. Earlier work has also shown that many helminth species tend to have taxonomically restricted host ranges ranges [@Pedersen2005;@Poulin2003;@Rosas-Valdez2010] but suggested viruses, due to their rapid mutation rates, should more readily adapt to new hosts that are not necessarily closely related to existing hosts [@Woolhouse2001;@Parrish2008;@Elena2010]. These mixed results presented in different systems invite a broader-scale investigation on the question of why some parasites can overcome the physiological and ecological barriers between distantly related host species while others are localized within a host phylogenetic tree. 
+
+In this study, we compare the degrees of phylogenetic generalism of 781 parasite species, infecting at least two host species from four mammalian orders: Artiodactyla, Carnivora, Perissodactyla and Primates to search for first-order principles governing the patterns. We consider the variation in phylogenetic generalism in relation to two main factors: the higher-taxon parasite group (i.e., arthropods, bacteria, helminths, protozoa and viruses) and the transmission modes of each parasite species (i.e., close-contact transmission, complex life-cycle transmission, environmental transmission, and vector-borne transmission). 
+	
+Our study is unparalleled in terms of the diversity of host and parasite species considered together, and has been made possible by the newly published Global Mammal Parasite Database (GMPD) 2.0 [@Stephens2017], which includes an extensive record of parasite occurrence in free-ranging populations of over 400 mammal species from the focal orders, as well as further information on the taxonomy and characteristics of the parasite species. In addition to the host range of multi-host parasite species, we also examine a commonly neglected component of the picture -- the number of single-host parasites in relation to parasite taxonomy and transmission mode, as well as the position of their host in the phylogeny. In addition, we test the hypothesis that patterns of low parasite species richness tend to be restricted to phylogenetically distinct host species (i.e., species without extant close relatives in the phylogeny).
+
+
+## Materials and Methods
+
+Records of parasite associations with terrestrial mammals were obtained from the GMPD [@Nunn2005; @Stephens2017]. These records include Latin binomials and taxonomic classification for host and parasite species, and transmission mode for the majority of parasite species (>80%). Transmission modes were assigned in the GMPD based on an extensive literature review [@Nunn2005; @Stephens2017], and comprise: close contact, complex life-cycle (i.e., food-borne, with intermediate hosts transitioning parasites to their definitive hosts, including via predator-prey interactions), environmental and vector-borne transmission. The GMPD data were analyzed in R [@RCoreTeam2016] to establish the number and identity of parasite species per host species and the number and identity of host species per parasite species. The resulting study has 404 terrestrial mammal species. Because Perissodactyla is under-represented, with only 10 species compared to 118, 181 and 105 for Carnivora, Primates and Artiodactyla, respectively, we combine this order with Artiodactyla to form an ungulate group consisting of 115 species. 
+
+Additionally, a complete phylogeny of mammals [@Bininda-Emonds2007] was used to obtain the phylogenetic distance (PD) between all pairs of hosts. For the set of hosts of each parasite species, the mean pairwise PD between hosts was calculated, as was its standard effect size [@Webb2002]. The latter was obtained using _picante_ [@Kembel2010], under a null model in which the community data matrix (host-parasite associations) was randomized with the independent swap algorithm [@Gotelli2000], maintaining species occurrence frequency and sample species richness. This measure captures the average relatedness of the host species of a given parasite species on a standardized scale for comparison. Two further standard effect size metrics were calculated on each parasite species' host set in the same way: maximum PD of any two hosts in a parasite's set, and the ratio of the mean minimum PD to the maximum PD. The former metric provides a standardized measure of each parasite's breadth across the host phylogenetic tree (hereafter termed "span"). The latter metric provides a measure of the tendency for the set of host species to exhibit an aggregated or clumped distribution within the span [@Cooper2008] (hereafter termed "aggregation") and is achieved by calculating the PD of each host species to its nearest host, averaging this across all hosts and scaling by the span. The standard effect size calculations return a z-score and a p-value, where z-scores below -1.96 (specialist) and above +1.96 (generalist) are typically significantly different from the null expectation, assuming the null model generates a normally-distributed set of scores [@Ulrich2013]. Host evolutionary distinctiveness, measured as millions of years of evolutionary separation, was estimated directly from the mammal phylogeny [@Bininda-Emonds2007] using the _evol.distinct_ function in the R package _picante_ [@Kembel2010], utilizing the _equal splits_ function in which shared branches are apportioned equally among descendant lineages [@Redding2006]. Each hosts's terminal branch length was also recorded as an additional measure of evolutionary isolation. 
+
+
+## Results
+
+```{r, echo=F, warning=F, message=F}
+#mammal supertree
+library(ape)
+treelist=read.nexus("WR_2005_ST.txt")
+#best dates
+mtree=treelist[[1]]
+#dist matrix
+phydist<-cophenetic(mtree)
+#which hosts are in the parasite database
+d<-read.csv("GMPD_main_2016-11-28.csv",header=T)
+d<-subset(d,HostEnvironment=="terrestrial")
+keep.d<-which(names(d)%in%c("HostCorrectedName","HostOrder","ParasiteCorrectedName","Par.Type","Group"))
+d<-d[,keep.d]
+#remove rows where host is not identified to species
+d<-d[-which(d$HostCorrectedName=="no binomial name"),]
+#remove rows where parasite is not identified to species
+d<-d[-which(d$ParasiteCorrectedName=="no binomial name"),]
+d<-d[-which(d$ParasiteCorrectedName=="not identified to genus"),]
+#Sys.setlocale('LC_ALL','C') 
+d<-d[-grep("sp\\.",d$ParasiteCorrectedName),]
+## merge transmission mode data
+ptrans<-read.csv("GMPD_parasite_traits_2016-11-28.csv",header=T)
+ptrans<-subset(ptrans,select=c("ParasiteCorrectedName","close","nonclose","vector","intermediate"))
+d<-merge(d,ptrans,by="ParasiteCorrectedName")
+# identify host species in gmpd
+obs.hosts<-unique(d$HostCorrectedName)
+obs.hosts<-gsub(" ","_",obs.hosts) #put in underscore for compatibility with other dataframe
+#at which locations of phydist do these hosts occur?
+idx<-which(unlist(dimnames(phydist)[1]) %in% obs.hosts)
+#pull out smaller cophenetic matrix of only these hosts
+phydist.mini<-phydist[idx,idx]
+#make a community matrix for the call to ses.mpd
+d$HostCorrectedName<-gsub(" ","_",d$HostCorrectedName)
+d$HostCorrectedName<-as.factor(d$HostCorrectedName)
+d<-droplevels(d)
+comm<-as.data.frame.matrix(table(d[,c(which(names(d)=="ParasiteCorrectedName"),which(names(d)=="HostCorrectedName"))]))
+#comm<-1*(comm>0)
+#get normalized z-score for mpd
+library(picante)
+phydist.mini<-phydist.mini[order(rownames(phydist.mini)),order(rownames(phydist.mini))]
+```
+
+```{r, echo=F, eval=F}
+nri<-ses.mpd(comm,phydist.mini,null.model="independentswap",runs=1000)#change back to 1000!
+```
+
+```{r, echo=F}
+load("get_nri.Rda")
+```
+
+```{r, echo=F, warning=F}
+# prep to merge with other dataframe that has other parasite traits
+#nri<-nri[complete.cases(nri),]  # THIS REMOVES SINGLETON PARASITES (ONLY ONE HOST) SINCE MPD STUFF IS NA
+nri$ParasiteCorrectedName<-rownames(nri)
+nri<-merge(nri,ptrans,by="ParasiteCorrectedName")
+
+ptype<-read.csv("GMPD_parasite_taxonomy_2016-11-28.csv",header=T)
+ptype<-subset(ptype,select=c("ParasiteCorrectedName","ParType"))
+ptype<-ptype[!duplicated(ptype),]
+nri<-merge(nri,ptype,by="ParasiteCorrectedName")
+
+#remove rare parasite types
+nri4<-nri[-which(nri$ParType %in% c("Fungus","Prion")),]#c("Fungus","Prion")
+
+nri4$n.modes<-rowSums(cbind(nri4$close,nri4$nonclose,nri4$vector,nri4$intermediate))
+nri6<-nri4
+names(nri6)[which(names(nri6)=="ParasiteCorrectedName")]<-"para.name"
+names(nri6)[which(names(nri6)=="ParType")]<-"para.type"
+
+nri6$para.name<-as.character(nri6$para.name)
+
+nri6<-nri6[complete.cases(nri6),]
+
+
+nri.flat<-data.frame(para.name=character(),ntaxa=integer(),mpd.obs.z=numeric(),mpd.obs.p=numeric(),para.type=character(),tmode=character(),stringsAsFactors=FALSE)
+k<-1
+for (i in 1:dim(nri6)[1]){
+  if (nri6[i,"close"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"close";k<-k+1}
+  if (nri6[i,"nonclose"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"nonclose";k<-k+1}
+  if (nri6[i,"vector"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"vector";k<-k+1}
+  if (nri6[i,"intermediate"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"intermediate";k<-k+1}
+}
+
+```
+
+Across all parasites, infected hosts tend to be more related than expected by chance, indicated by negative z-scores for mean pairwise PD between hosts (Fig. 1, global median z-score=-1.1). However, while 96% of parasites exhibit negative z-scores (trending to more specialist than expected by chance), only 16% of parasites have significantly negative z-scores. No parasites were found to have significantly positive z-scores.
+
+```{r, echo=FALSE, warning=F, message=F}
+library(ggplot2)
+nri.flat$para.type<-as.factor(nri.flat$para.type)
+nri.flat$tmode<-as.factor(nri.flat$tmode)
+nri.flat<-nri.flat[complete.cases(nri.flat),]
+#order factors in z score order for plotting
+ag.para.z<-aggregate(nri.flat$mpd.obs.z,by=list(nri.flat$para.type),FUN=mean)
+ag.para.z<-ag.para.z[order(ag.para.z$x,decreasing=T),]
+nri.flat$para.type<-factor(nri.flat$para.type,ag.para.z$Group.1)
+ag.tmode.z<-aggregate(nri.flat$mpd.obs.z,by=list(nri.flat$tmode),FUN=mean)
+ag.tmode.z<-ag.tmode.z[order(ag.tmode.z$x,decreasing=F),]
+nri.flat$tmode<-factor(nri.flat$tmode,ag.tmode.z$Group.1)
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+global.median.z<-median(nri6$mpd.obs.z,na.rm=T)
+
+ggplot(nri.flat, aes(x=para.type, y=mpd.obs.z, fill=tmode)) + geom_boxplot(notch=T) + theme(axis.text.x  = element_text(angle=90, vjust=0.5)) + scale_fill_discrete(name="Transmission\nmode",labels=c("Close","Complex","Vector","Envir"))+xlab("Parasite type")+ylab("Standard effect size of mean\npairwise PD between hosts")+ylim(c(-5,1))+geom_hline(yintercept=global.median.z,colour="black")
+
+#explanation for horn-shaped boxes: http://r.789695.n4.nabble.com/Strange-horns-on-notched-box-plots-td858004.html
+```
+
+Figure 1. Boxplot of z-scores in each parasite group stratified by transmission mode. Negative z-scores indicate that a parasite species tends to infect host species that are more closely related than expected by chance (under the null model). Alternatively, positive z-scores indicate the opposite. In terms of deviation from the null model, 16% of z-scores are significantly negative (none of the positive z-scores are statistically significant). Solid horizontal line indicates the global median z-score.
+
+The proportion of these significantly negative z-scores varies across parasite type, with smallest to largest proportions corresponding to bacteria, arthropods, helminths, viruses and protozoa (test for equality of proportions, p<0.001, Fig. 2 - top panel). The proportion of significantly negative z-scores is not significantly different across parasite transmission modes (test for equality of proportions, p=0.95, Fig. 2 - bottom panel). However, across the full range of z-scores, each of the two covariates (parasite type and transmission mode) and their interaction explain significant differences between mean values (ANOVA: p<0.001 for parasite type, transmission mode and interaction, details in Table S1, supplementary material).
+
+```{r, echo=F, warning=F, message=F}
+sig.z<-NULL #note all significant z scores are negative (checked independently)
+for (i in unique(nri6$para.type)){
+  tmp<-subset(nri6,para.type==i)
+  sig.z<-rbind(sig.z,c(i,dim(tmp)[1],length(which(tmp$mpd.obs.p<0.05))))
+}
+sig.z<-as.data.frame(sig.z)
+names(sig.z)<-c("para.type","n","x")
+sig.z$n<-as.integer(as.character(sig.z$n))
+sig.z$x<-as.integer(as.character(sig.z$x))
+sig.z$y<-sig.z$n-sig.z$x
+#prop.test(sig.z$x,sig.z$n)
+sig<-NULL
+for (i in 1:dim(sig.z)[1]){
+  for(j in 1:sig.z[i,"x"]){
+    sig<-rbind(sig,c(as.character(sig.z$para.type[i]),1))
+  }
+  for(j in 1:sig.z[i,"y"]){
+    sig<-rbind(sig,c(as.character(sig.z$para.type[i]),0))
+  }
+}
+sig<-as.data.frame(sig)
+names(sig)<-c("para.type","sig")
+sig$para.type<-factor(sig$para.type,levels=c("Bacteria","Arthropod","Helminth","Protozoa","Virus"))
+n4taxa<-table(sig$para.type)
+
+sig.a<-ggplot(sig,aes(x=para.type,fill=sig))+geom_bar(position="fill")+scale_fill_discrete(name="Significant")+xlab("Parasite type")+ylab("Proportion of parasites significantly specialist")+scale_fill_manual(values=c("gray","dodgerblue4"))+coord_flip()+theme(legend.position="none")+annotate("text",x=5,y=0.5,label=paste("n =",as.numeric(n4taxa[5])))+annotate("text",x=4,y=0.5,label=paste("n =",as.numeric(n4taxa[4])))+annotate("text",x=3,y=0.5,label=paste("n =",as.numeric(n4taxa[3])))+annotate("text",x=2,y=0.5,label=paste("n =",as.numeric(n4taxa[2])))+annotate("text",x=1,y=0.5,label=paste("n =",as.numeric(n4taxa[1])))
+```
+
+
+```{r, echo=F, warning=F, message=F}
+sig.z<-NULL #note all significant z scores are negative (checked independently)
+for (i in unique(nri.flat$tmode)){
+  tmp<-subset(nri.flat,tmode==i)
+  sig.z<-rbind(sig.z,c(i,dim(tmp)[1],length(which(tmp$mpd.obs.p<0.05))))
+}
+sig.z<-as.data.frame(sig.z)
+names(sig.z)<-c("tmode","n","x")
+sig.z$n<-as.integer(as.character(sig.z$n))
+sig.z$x<-as.integer(as.character(sig.z$x))
+sig.z$y<-sig.z$n-sig.z$x
+#prop.test(sig.z$x,sig.z$n)
+sig<-NULL
+for (i in 1:dim(sig.z)[1]){
+  for(j in 1:sig.z[i,"x"]){
+    sig<-rbind(sig,c(as.character(sig.z$tmode[i]),1))
+  }
+  for(j in 1:sig.z[i,"y"]){
+    sig<-rbind(sig,c(as.character(sig.z$tmode[i]),0))
+  }
+}
+sig<-as.data.frame(sig)
+names(sig)<-c("tmode","sig")
+sig$tmode<-as.character(sig$tmode)
+sig$tmode[which(sig$tmode=="close")]<-"Close"
+sig$tmode[which(sig$tmode=="intermediate")]<-"Complex"
+sig$tmode[which(sig$tmode=="nonclose")]<-"Envir."
+sig$tmode[which(sig$tmode=="vector")]<-"Vector"
+
+n4tmode<-table(sig$tmode)
+sig$tmode<-factor(sig$tmode,levels=c("Close","Envir.","Complex","Vector"))
+sig.b<-ggplot(sig,aes(x=tmode,fill=sig))+geom_bar(position="fill")+xlab("Transmission mode")+ylab("")+scale_fill_discrete(name="Significant")+scale_fill_manual(values=c("gray","dodgerblue4"))+coord_flip()+theme(legend.position="none")+annotate("text",x=4,y=0.5,label=paste("n =",as.numeric(n4tmode[4])))+annotate("text",x=3,y=0.5,label=paste("n =",as.numeric(n4tmode[3])))+annotate("text",x=2,y=0.5,label=paste("n =",as.numeric(n4tmode[2])))+annotate("text",x=1,y=0.5,label=paste("n =",as.numeric(n4tmode[1])))
+
+library(gridExtra)
+grid.arrange(sig.a,sig.b, nrow = 2)
+```
+
+Figure 2. Proportion of parasites (blue bars) with sets of host species that are more related than expected by chance, grouped by parasite type (top panel) and transmission mode (bottom panel). Sample size ($n$) for each group is shown in gray part of bars.
+
+Parasite type by transmission mode interactions are particularly driven by protozoa and viruses, and close contact and vector-borne transmission (Fig. S1); close contact transmission is associated with atypical extreme specialism in these groups and vector-borne transmission is associated with atypical generalism in these same groups. Parasites that infect hosts only within one group (carnivores, primates or ungulates), exhibit patterns of host relatedness that are generally qualitativey similar to the overall pattern (Figs. S2 & S3). Departures from the main pattern include the observation of several specialist bacteria infecting carnivores (Fig. S2) and the relative insensitivity of parasites infecting primates and ungulates on the patterns of specialization across transmission modes (Fig. S3).
+
+```{r, echo=F, warning=F, message=F, fig.width=10}
+library(sjPlot)
+library(sjmisc)
+nri6$para.type<-droplevels(nri6$para.type)
+
+
+fit <- lm(mpd.obs.z ~ para.type*close + para.type*vector + para.type*intermediate + para.type*nonclose, data = nri6)
+#summary(fit)
+
+p1<-sjp.grpfrq(nri6$mpd.obs.z,
+           nri6$para.type,
+           intr.var = nri6$close,
+           axis.titles = c("",""),
+           intr.var.labels = rep(c("0", "1"),5), 
+           type = "boxplot",ylim=c(-6,2),
+           title="Close",
+           prnt.plot=F)
+
+p2<-sjp.grpfrq(nri6$mpd.obs.z,
+           nri6$para.type,
+           intr.var = nri6$nonclose,
+           axis.titles = c("",""),
+           intr.var.labels = rep(c("0", "1"),5), 
+           type = "boxplot",ylim=c(-6,2),
+           title="Envir.",
+           prnt.plot=F)
+
+p3<-sjp.grpfrq(nri6$mpd.obs.z,
+           nri6$para.type,
+           intr.var = nri6$vector,
+           axis.titles = c("",""),
+           intr.var.labels = rep(c("0", "1"),5), 
+           type = "boxplot",ylim=c(-6,2),
+           title="Vector",
+           prnt.plot=F)
+
+p4<-sjp.grpfrq(nri6$mpd.obs.z,
+           nri6$para.type,
+           intr.var = nri6$intermediate,
+           axis.titles = c("",""),
+           intr.var.labels = rep(c("0", "1"),5), 
+           type = "boxplot",ylim=c(-6,2),
+           title="Complex",
+           prnt.plot=F)
+
+
+
+
+
+```
+
+In comparing the most abundant parasite group (helminths) with the group containing the highest proportion of specialists (viruses) it is noteable that viruses exhibit much wider variation in degree of generalism (Fig. 3), containing many extreme specialists (large, negative z-scores) but also many relative generalists (positive z-scores). By contrast, helminths to be more consistent in their degree of generalism, and contain relatively few species that are at either extreme of the generalism-specialism continuum.
+
+```{r, echo=FALSE, warning=F}
+zdat<-nri6[which(nri6$para.type %in% c("Virus","Helminth")),]
+zdat$para.type<-droplevels(zdat$para.type)
+#zdat$para.type <- factor(zdat$para.type, c("Virus","Protozoa","Arthropod","Bacteria","Helminth"))
+mV<-mean(zdat$mpd.obs.z[which(zdat$para.type=="Virus")],na.rm=T)
+mH<-mean(zdat$mpd.obs.z[which(zdat$para.type=="Helminth")],na.rm=T)
+ggplot(zdat)+geom_density(aes(x=mpd.obs.z,fill=para.type),alpha=0.3)+geom_vline(xintercept=mV,col=gg_color_hue(5)[4],lwd=2)+geom_vline(xintercept=mH,col=gg_color_hue(5)[1],lwd=2)+xlab("Standard effect size for mean pairwise PD")+ylab("Density")+scale_fill_manual(name="Parasite\ntype",values=gg_color_hue(5)[c(1,4)])+xlim(c(-6,2))
+```
+
+Figure 3. Probability density function of z-scores for mean pairwise PD between hosts of helminths (red, the most abundant parasite group in GMPD) and viruses (blue, the group containing the highest proportion of significantly specialist parasites). The mean z-score is somewhat higher for helminths than for viruses, perhaps reflecting a trend toward more generalism in helminths (group mean values denoted by color-coded vertical lines), but the virus group contains more extreme parasites in terms of both specialism and generalism. 
+
+The standard effect size of maximum PD in a parasite's host set provides a comparative measure of the span that a parasite exhibits across the host phylogenetic tree. In addition, the standard effect size of the ratio of mean minimum to maximum PD measures the tendency for hosts of a parasite to aggregate in the mammal phylogeny. We found that parasite taxonomic groups exhibit variation in both of these metrics. Protozoa, viruses and helminths contain several parasite species whose span is significantly smaller than expected by chance (Fig. 4 - points left of boxes in subplots). No parasites have spans that are bigger than expected by chance, which is not surprising since the spans associated with random host species selected in the null model are frequently large. Viruses and protozoa additionally contain some species whose hosts are more aggregated than expected by chance (Fig. 4 - points below boxes in subplots). Patterns of span and aggregation are similar when grouped by transmission mode (Fig. S4). An example illustration of two parasites, _Leptospira interrogans_ and _Trypanosoma cruzi_, with similar span but very different aggregation patterns are provided in Fig. 5.
+
+```{r, echo=F}
+source("ses.maxD.R")
+source("ses.mntd.to.maxD.R")
+```
+
+```{r, echo=F, eval=FALSE}
+myMaxD<-ses.maxD(comm,phydist.mini,null.model="independentswap",runs=1000)
+myRatio<-ses.mntd.to.maxD(comm,phydist.mini,null.model="independentswap",runs=1000)
+#myMPD<-ses.mpd(comm,phydist.mini,null.model="independentswap",runs=5)
+```
+
+```{r, echo=F}
+load("get_myMaxD.Rda")
+load("get_myRatio.Rda")
+```
+
+```{r, echo=F, warning=F}
+auxPtype<-read.csv("GMPD_parasite_taxonomy_2016-11-28.csv",header=T)
+auxPtype<-subset(auxPtype,select=c("ParasiteCorrectedName","ParType"))
+d<-merge(d,auxPtype,by="ParasiteCorrectedName")
+P.type.binom<-d[,c("ParType","ParasiteCorrectedName")]
+P.type.binom<-P.type.binom[!duplicated(P.type.binom),]
+P.type.binom<-P.type.binom[order(P.type.binom$ParasiteCorrectedName),]
+### UP TO HERE - RESOLVE MERGE ISSUE
+myMaxD$ParasiteCorrectedName<-rownames(myMaxD)
+myMaxD<-merge(myMaxD,ptype,by="ParasiteCorrectedName")
+names(myMaxD)[which(names(myMaxD)=="ParType")]<-"para.type"
+myMaxD$col.para<-"TBD"
+for (i in 1:dim(myMaxD)[1]){
+  if (myMaxD$para.type[i]=="Helminth"){myMaxD$col.para[i]<-"red"}#"orange"
+  if (myMaxD$para.type[i]=="Bacteria"){myMaxD$col.para[i]<-"orange"}#"blue"
+  if (myMaxD$para.type[i]=="Arthropod"){myMaxD$col.para[i]<-"gray20"}#"gray20"
+  if (myMaxD$para.type[i]=="Virus"){myMaxD$col.para[i]<-"blue"}#"red"
+  if (myMaxD$para.type[i]=="Fungus"){myMaxD$col.para[i]<-"chartreuse3"}#"green"
+  if (myMaxD$para.type[i]=="Protozoa"){myMaxD$col.para[i]<-"magenta"}#"magenta"
+  if (myMaxD$para.type[i]=="Prion"){myMaxD$col.para[i]<-"yellow"}#"yellow"
+}
+
+##### GGPLOT
+gg.disp<-myMaxD
+myRatio$ParasiteCorrectedName<-rownames(myRatio)
+myRatio<-subset(myRatio,select=c("ParasiteCorrectedName","mntd.to.maxD.obs.z"))
+gg.disp<-merge(gg.disp,myRatio,by="ParasiteCorrectedName")
+names(gg.disp)[which(names(gg.disp)=="mntd.to.maxD.obs.z")]<-"mntd.z"
+gg.disp<-subset(gg.disp,select=c(para.type,maxD.obs.z,mntd.z,col.para))
+names(gg.disp)<-c("para.type","span.z","mntd2span.z","my.color")
+gg.disp<-gg.disp[complete.cases(gg.disp),]
+gg.disp<-gg.disp[which(gg.disp$span.z>-10),]
+gg.disp<-gg.disp[-which(gg.disp$para.type%in%c("Fungus","Prion")),]
+gg.disp$para.type<-droplevels(gg.disp$para.type)
+circ_ecoli<-myRatio$mntd.to.maxD.obs.z[which(rownames(myRatio)=="Escherichia coli")]
+circ_tcruzi<-myRatio$mntd.to.maxD.obs.z[which(rownames(myRatio)=="Trypanosoma cruzi")]
+ann_text1<-data.frame(span.z=0.0,mntd2span.z=circ_ecoli,para.type=factor("Bacteria",levels=levels(gg.disp$para.type)),my.color="black")
+ann_text2<-data.frame(span.z=0.0,mntd2span.z=circ_tcruzi,para.type=factor("Protozoa",levels=levels(gg.disp$para.type)),my.color="black")
+ggplot(gg.disp,aes(span.z,mntd2span.z,colour=factor(my.color)))+geom_point()+facet_wrap(~para.type,nrow=2)+xlab("Span: Standard effect size for maximum pairwise PD")+ylab("Aggregation: Standard effect size for ratio of mean\nminimum pairwise PD to maximum pairwise PD")+theme(legend.position="none")+geom_segment(aes(x=-2,xend=2,y=-2,yend=-2),colour="gray50",size=0.2)+geom_segment(aes(x=2,xend=2,y=-2,yend=2),colour="gray50",size=0.2)+geom_segment(aes(x=-2,xend=2,y=2,yend=2),colour="gray50",size=0.2)+geom_segment(aes(x=-2,xend=-2,y=-2,yend=2),colour="gray50",size=0.2)+theme(panel.margin=grid::unit(0.75,"cm"))+geom_text(data=ann_text1,label="O",colour="black")+geom_text(data=ann_text2,label="O",colour="black")+scale_color_manual(values=gg_color_hue(5)[c(4,2,5,3,1)])
+```
+
+Figure 4. Scatter plot showing both span and aggregation. The x-axes provide a standard effect size of maximum pairwise PD of a parasite's host set (span) and the y-axes provide a standard effect size of the ratio of mean minimum pairwise PD to maximum pariwise PD (aggregation), colored by parasite type. Circled bacterial and protozoan parasites are _Leptospira interrogans_ and _Trypanosoma cruzi_, respectively. These parasites have a similar span ($x\approx0$), but very different host aggregation patterns (_L. interrogans_ random distribution of host species, _T. cruzi_ aggregated distribution of host species, illustrated further in Fig. 5). Boxes encompassing $-1.96<x,y<1.96$ contain parasites whose z-scores are typical of those expected from a random set of hosts under the null model. Negative z-scores beyond -1.96 are typical of host sets exhibiting significantly small span (x-axis) and aggregated distribution (y-axis). 
+
+```{r,echo=F, warning=F, fig.width=10}
+#mammal supertree
+library(ape)
+library(geiger)
+treelist=read.nexus("WR_2005_ST.txt")
+#best dates
+mtree=treelist[[1]]
+host.prune<-as.data.frame(rownames(phydist.mini))
+names(host.prune)<-"host.spp"
+host.prune$host.spp<-as.character(host.prune$host.spp)
+host.prune$rand<-runif(dim(host.prune)[1],0,1)
+rownames(host.prune)<-host.prune$host.spp
+host.prune<-subset(host.prune,select="rand")
+mtree2<-treedata(mtree,host.prune,warnings=F)
+orig.tip.label<-mtree2[[1]]$tip.label
+mtree2[[1]]$tip.label<-rep("",dim(host.prune)[1])
+#mtree2[[1]]$tip.label<-rep("*",399)
+
+#identify some para with max z score and smallest mean2max ratio
+hosts.tcruzi<-unique(d$HostCorrectedName[which(d$ParasiteCorrectedName=="Trypanosoma cruzi")])
+hosts.ecoli<-unique(d$HostCorrectedName[which(d$ParasiteCorrectedName=="Escherichia coli")])
+hosts.linterrogans<-unique(d$HostCorrectedName[which(d$ParasiteCorrectedName=="Leptospira interrogans")])
+
+my.colors<-rep("white",dim(host.prune)[1])
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+# COMPARE 2 PARASITES WITH BIG SPANS WHERE ONE IS CLUMPY AND ONE IS RANDOM, AND ONE IS REGULAR
+idx1<-which(rownames(host.prune)%in%hosts.tcruzi)
+#idx2<-which(rownames(host.prune)%in%hosts.ecoli)
+idx2<-which(rownames(host.prune)%in%hosts.linterrogans)
+
+my.colors[idx1]<-gg_color_hue(5)[5]
+my.colors[idx2]<-gg_color_hue(5)[3]
+my.colors[intersect(idx1,idx2)]<-"black"
+
+plot(mtree2[[1]],show.tip.label=T,edge.color="gray20",edge.width=0.5,direction="downwards",cex=1.0)
+tiplabels(pch=22,col="gray80",bg=my.colors,cex=2.0,adj=c(0,-2.5))
+```
+
+Figure 5. Examples of aggregated (purple) and random (green) distributions of parasites of similar span in the host phylogeny. The parasites are _L. interrogans_ (green) and _T. cruzi_ (purple), colored according to their groupings in Fig. 4. Black colors indicate hosts infected by both
+
+The main analysis is centered on parasite species that infect at least two host species. Including parasite species for which only one terrestrial mammal host is identified in the database provides an opportunity to compare single-host parasites and multi-host parasites. Quantitatively, single host parasites ($n=696$) are almost as common as multi-host parasites ($n=781$), and broadly reflect the composition of parasite taxonomy and transmission modes observed in multi-host parasites (Fig. 6). A few notable exceptions include the virus group, which is under-represented among single-host parasites in general, and protozoan complex life-cycle parasites, which are more commonly single-host (the mammal is the final, definitive host) than multi-host. Additionally, in arthropods, close transmission has a higher frequency in single-host parasites, switching to a higher frequency of environmental transmission for parasites with multiple hosts. 
+
+
+```{r, echo=F, warning=F}
+#plot parasite data for single-host parasites
+HP.table<-cbind(as.character(d$HostCorrectedName),as.character(d$ParasiteCorrectedName))
+HP.table<-as.data.frame(HP.table)
+HP.table<-HP.table[!duplicated(HP.table),]
+names(HP.table)<-c("host.name","para.name")
+para.nhosts<-table(HP.table$para.name)
+#prep for ggplot
+library(reshape2)
+para.nhosts<-as.data.frame(para.nhosts)
+names(para.nhosts)<-c("ParasiteCorrectedName","nhosts")
+P.metrics<-subset(d,!(ParType%in%c("Prion","Fungus")),select=c("ParasiteCorrectedName","ParType","close","nonclose","vector","intermediate"))
+P.metrics<-P.metrics[!duplicated(P.metrics),]
+P.metrics<-merge(P.metrics,para.nhosts,by="ParasiteCorrectedName")
+P.metrics<-P.metrics[complete.cases(P.metrics),]
+P.metrics$multi.host<-ifelse(P.metrics$nhosts>1,1,0)
+P.metrics.tmp<-subset(P.metrics,select=c("ParasiteCorrectedName","close","nonclose","vector","intermediate"))
+P.metrics.melt<-melt(P.metrics.tmp,id.vars="ParasiteCorrectedName")
+P.metrics.melt<-subset(P.metrics.melt,value==1)
+P.metrics.tmp<-subset(P.metrics,select=c("ParasiteCorrectedName","ParType","multi.host"))
+P.metrics.melt<-merge(P.metrics.melt,P.metrics.tmp,by="ParasiteCorrectedName")
+P.metrics.melt<-subset(P.metrics.melt,ParType!="Prion")
+P.metrics.melt$Par.Type<-droplevels(P.metrics.melt$ParType)
+P.metrics.melt$multihost.status<-as.factor(ifelse(P.metrics.melt$multi.host==0,"Single-host","Multi-host"))
+P.metrics.melt$multihost.status<-factor(P.metrics.melt$multihost.status,levels(P.metrics.melt$multihost.status)[2:1])
+P.metrics.melt<-subset(P.metrics.melt,ParType!="Fungus")
+P.metrics.melt<-droplevels(P.metrics.melt)
+P.metrics.melt$Par.Type<-factor(P.metrics.melt$Par.Type,levels(P.metrics.melt$ParType)[c(2,1,3,5,4)])
+P.metrics.melt$variable<-factor(P.metrics.melt$variable,levels(P.metrics.melt$variable)[c(1,4,3,2)])#2,1,4,3
+ggplot(P.metrics.melt,aes(ParType,fill=variable))+geom_bar()+facet_wrap(~multihost.status)+xlab("Parasite type")+scale_fill_manual(values=gg_color_hue(4)[c(1,2,3,4)],name="Transmission\nmode",labels=c("Close","Complex","Vector","Envir."))+ylab("Count")+theme(axis.text.x=element_text(angle=90,hjust=1))
+```
+
+Figure 6. Number of single-host and multi-host (>1 host species) parasites as a function of parasite type and transmission mode. Parasites with more than one reported transmission mode (360/1477) are counted in each valid transmission mode category. 
+
+One potential explanation for the number of parasite species associating with a host is the evolutionary isolation of that host. To test this statistically, we first ascertained that the number of parasite species per host species is over-dispersed (variance to mean ratio ~25), meaning that a small number of host species are associated with a large number of parasite species. Accordingly, a set of negative binomial generalized linear models were constructed. These models have the number of parasite species per host species as the response variable, and either host evolutionary distinctiveness or host terminal branch length as the main predictor variable (Fig. 7). Each model was fitted with and without the inclusion of a second predictor variable, the number of host records in the GMPD, which was used to control for sampling bias. Only one model showed that more evolutionarily distinct hosts (but not those subtending from longer terminal branches, and not those models including the number of host records) had significantly fewer parasite species (Table S2, supplementary material). Even ignoring the indication that these patterns appear to be largely driven by the number of host records (a measure of host sampling bias that was significant in all models in which it was applied), host evolutionary distinctiveness was not especially strongly related to parasite species richness; one unit increase in evolutionary distinctiveness (millions of years of evolution) was associated with the reduction in parasite species richness by approximately one parasite species (supplementary material). 
+
+
+
+```{r, echo=F, warning=F, fig.width=8}
+### which hosts are the ones associated with 'single-host' parasites?
+## this analysis is sensitive to observing rare events - a point worth making. 
+H.metrics<-as.data.frame(table(d$HostCorrectedName))
+names(H.metrics)<-c("host.name","n.records")
+H.metrics$n.para<-0
+for (i in 1:dim(H.metrics)[1]){
+  p.set<-unique(d$ParasiteCorrectedName[which(d$HostCorrectedName==H.metrics$host.name[i])])
+  H.metrics$n.para[i]<-length(p.set)
+}
+library(picante)
+mtree2[[1]]$tip.label<-orig.tip.label
+my.ed<-evol.distinct(mtree2[[1]],type="equal.splits")
+names(my.ed)<-c("host.name","ed")
+H.metrics<-merge(H.metrics,my.ed)
+H.metrics$singleton<-ifelse(H.metrics$n.para==1,1,0)
+H.order.binom.tmp<-subset(d,select=c("HostCorrectedName","Group"))
+H.order.binom.tmp<-H.order.binom.tmp[!duplicated(H.order.binom.tmp),]
+names(H.order.binom.tmp)<-c("host.name","order")
+H.metrics<-merge(H.metrics,H.order.binom.tmp)
+#use terminal branch length
+terms<-mtree$edge[,2]<=Ntip(mtree)
+terminal.edges<-as.data.frame(cbind(mtree$tip.label,mtree$edge.length[terms==T]))
+names(terminal.edges)<-c("host.name","tbl")
+terminal.edges$tbl<-as.numeric(as.character(terminal.edges$tbl))
+
+
+H.metrics<-merge(H.metrics,terminal.edges,by="host.name")
+ev.ed<-ggplot(H.metrics,aes(x=factor(n.para),y=ed))+geom_boxplot()+xlab("Number of parasite species per host species")+ylab("Host evolutionary\ndistinctiveness")+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ev.bl<-ggplot(H.metrics,aes(x=factor(n.para),y=tbl))+geom_boxplot()+xlab("Number of parasite species per host species")+ylab("Host terminal\nbranch length")+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+grid.arrange(ev.ed,ev.bl,ncol=1)
+```
+
+Figure 7. Box-and-whisker plots showing the relationship between number of parasite species per host species and host evolutionary distinctiveness (top panel) and host terminal branch length (bottom panel).
+
+## Discussion
+
+We have shown that most multi-host parasites are relatively unconstrained by the phylogenetic distance separating hosts, but among the 781 multi-host parasite species considered here, there is nonetheless a general tendency for parasites to infect host species that are comparatively closely related. Of the five parasite groups, bacteria are the most generalist on average and protozoa and viruses contain the most specialist parasites. While transmission mode naturally impacts the opportunity for parasites to encounter novel host species, it was less influential in determining parasite generalism than parasite taxonomy, where the latter likely captures numerous biological traits for which data is currently lacking. Additionally, there were interactions between parasite type and transmission mode; both protozoan and viral parasites exhibit specialism when transmission is through close contact, in agreement with primate parasite research that used taxonomy as a way to classify host specificity [@Pedersen2005]. Additionally, protozoan parasites that are environmentally transmitted are often more specialist than expected by chance, whereas vector-borne protozoa are typically generalist. 
+
+Previous research based on taxonomic definitions of generalism have tended to suggest that viruses and protozoa are relatively generalist and helminths relatively specialist [@Pedersen2005]. Some of the differences between those results and the ones we present here emerge from our consideration of host phylogenetic breadth and not simply host taxonomic richness; taxonomic definitions may exagerate rare but large host species jumps, by classifying a parasite as, for instance, associating with hosts of multiple orders, even if that parasite is most often associated with hosts within the same genus (where we capture large jumps with the complementary standard effect size for span). In addition, and in contrast with purely taxonomic definitions of generalism, examining the standard effect sizes of host phylogenetic diversity metrics allows for continuous, standardized measures that facilitate comparison across parasite species and with null models thereby providing more robust hypotheses testing. In doing so, we found, for example, that while viruses often infect closely related hosts, as has been observed previously [e.g., @Huang2014], they are also a group that contains several parasites whose hosts are distantly related. Similarly, previous research on a subset of primate helminths demonstrated strong patterns of cospeciation, with occasional cross-clade host switching [@Hugot1999], which is reflected in our observation that the level of host specificty of several helminths is equivalent to that of random host sets, and these parasites may both jump and creep through host phylogeny, evidenced by several examples of large-span and high-aggregation helminths. By extending taxonomic definitions of generalism, using a large set of host and parasite species, and using standard effect sizes for complementary measures of average host relatedness, span, and aggregation in the host phylogeny, the nuanced patterns of host-parasite associations are clarified.
+
+While the underlying data represent known host-parasite associations, they are not complete [@Hopkins2007] nor are they necessarily indicative of parasite fitness. Parasites may jump between host species, establishing in each, as demonstrated by rabies virus [@Holmes2009]. Parasites can also maintain themselves in some reservoir host species and occasionally spill over to others, as evidenced, for example, in MERS coronovirus transmission from camels to humans [@Mackay2015]. Consequently, it is difficult to infer future potential for novel host acquisition from existing data based only on observations of presence-absences. Plausibly, parasites with rapid evolution may be both good adaptors to, and explorers of, the space of host species, as is indicated by the virus group which exhibits associations with dispersed clusters of host species in the mammal phylogeny, perhaps indicative of taking occasional leaps to novel host species followed by subsequent colonization of closely related host species. Moreover, since host species geographical ranges have previously been shown to be one of the strongest predictors of viral parasite sharing among primates [@Davies2008], and are only implicitly included here via the non-independence of range overlap and phylogenetic relatedness [@Poulin2008], the explicit inclusion of geography is a promising line of macroecological inquiry.
+
+Further biological interpretation of the patterns presented will require extensive accumulation and accessibility of metadata known to impact host specificity. This includes parasite organism size, mode of reproduction, and mutation rate [@Poulin2000;@Woolhouse2001]. Such data will give access to a variety of questions. For example, is the low specificity of bacteria attributable to mutation rates, horizontal gene transfer or the need to maintain broadly-acting virulence genes to compete with other microbes in the environment? [@Wilson2003]. How does virus architecture, summarized by the Baltimore classification, for example, influence host specificty directly and via the frequency of vector-borne transmission? Is helminth host specificity constrained by interspecific competition or by evolutionary history of cospeciation? Opening these kinds of questions will greatly improve our understanding of how parasite diversity is regulated, and which potential host species, including humans, are at risk of acquiring novel parasites. Zoonotic transmission of parasites from animal to human populations is a longstanding concern [@Jones2008] and has led to the assembly of data sources that identify common parasite types and transmission modes associated with emerging infectious diseases in humans [@Taylor2001;@Jones2008]. Our study lends support to these efforts by identifying the pool of mammalian parasites and their general ability to associate with distantly related host species as well as host species that are closely related to humans. 
+
+## References
+
+## Supplementary material
+
+###Parasite taxonomy, transmission mode and their interaction explain significant variation in mean pairwise PD of the sets of hosts of each parasite
+
+```{r, echo=T}
+#simple test to motivate investigation of factors and their interaction
+basic.aov<-aov(lm(nri.flat$mpd.obs.z~nri.flat$para.type*nri.flat$tmode))
+summary(basic.aov)
+```
+
+Table S1: ANOVA testing differences in z-scores according to parasite taxonomic group, transmission mode and their interaction. 
+
+###Interactions affecting host specificty are largely driven by protozoa and viruses and by close contact and vector-borne transmission
+
+```{r, warning=F,message=F, echo=F, fig.width=8}
+library(grid)
+library(gridExtra)
+grid.arrange(p1$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p2$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p3$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), p4$plot+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)]), nrow = 2,left=textGrob("Standard effect size of mean pairwise\nPD between hosts",rot=90))
+```
+
+Figure S1: Standard effect size of mean pairwise PD between hosts stratified by parasite type (colored bars) and presence (1) or absence (0) of each transmission mode (named subplots), indicating interactions between parasite type (particularly protozoa and viruses) and transmission mode (particularly close contact and vector-borne transmission)
+
+###Effect of host order on relatedness of hosts within a parasite's host set
+
+Several parasites exclusively infect hosts within a host order. Grouping host species by order allows us to inspect how results on host specificity are driven by the non-monophyletic structure of a tree with three host orders. Here, the null models are constructed in a similar way to the main text, except that random mammalian host species are selected according to the host taxonomic bias of the parasite. For example, a parasite known to infect 5 carnivores, 5 primates and 0 ungulates would have its random sets constrcuted from 5 randomly selected carnivores and 5 randomly selected primates. The plot separates parasites that infect hosts of multiple orders, carnivores only, primates only and ungulates only. 
+
+```{r, echo=FALSE, eval=F, warning=F}
+nri6$z.tax<--999
+##calc. n hosts of each order for each parasite
+nri6$n.carnivores<-0
+nri6$n.primates<-0
+nri6$n.ungulates<-0
+for (i in 1:dim(nri6)[1]){
+  this.para<-nri6$para.name[i]
+  host.set<-unique(d$HostCorrectedName[which(d$ParasiteCorrectedName==this.para)])
+  nri6$n.carnivores[i]<-sum(H.metrics$order[H.metrics$host.name %in% host.set]=="carnivores")
+  nri6$n.primates[i]<-sum(H.metrics$order[H.metrics$host.name %in% host.set]=="primates")
+  nri6$n.ungulates[i]<-sum(H.metrics$order[H.metrics$host.name %in% host.set]=="ungulates")
+}
+
+H.metrics$host.name<-as.character(H.metrics$host.name)
+for (i in 1:dim(nri6)[1]){
+  the.mpds<-NULL
+  n.reps<-1000
+  for (rep in 1:n.reps){# need to do this several times to build up distrib. (n=1000, 10 for testing)
+    this.set<-c(sample(H.metrics$host.name[H.metrics$order=="carnivores"],size=nri6$n.carnivores[i],replace=F),sample(H.metrics$host.name[H.metrics$order=="primates"],size=nri6$n.primates[i],replace=F),sample(H.metrics$host.name[H.metrics$order=="ungulates"],size=nri6$n.ungulates[i],replace=F))
+    sub.phy<-phydist.mini[which(dimnames(phydist.mini)[[1]] %in% this.set),which(dimnames(phydist.mini)[[1]] %in% this.set)]
+    the.mpds<-c(the.mpds,mean(sub.phy[lower.tri(sub.phy==T,diag=F)]))
+  }
+  nri6$z.tax[i]<-(nri6$mpd.obs[i]-mean(the.mpds))/sd(the.mpds)
+}
+
+```
+
+```{r, echo=F, eval=T}
+load("get_nri6ztax.Rda")
+```
+
+```{r, echo=F}
+nri6$host.orders<-"TBA"
+for (i in 1:dim(nri6)[1]){
+  if (nri6$n.carnivores[i]>0&nri6$n.primates[i]==0&nri6$n.ungulates[i]==0){nri6$host.orders[i]<-"Carnivores"}
+  else if (nri6$n.carnivores[i]==0&nri6$n.primates[i]>0&nri6$n.ungulates[i]==0){nri6$host.orders[i]<-"Primates"}
+  else if (nri6$n.carnivores[i]==0&nri6$n.primates[i]==0&nri6$n.ungulates[i]>0){nri6$host.orders[i]<-"Ungulates"}
+  else {nri6$host.orders[i]<-"Multi-order"}
+}
+ggplot(nri6,aes(x=para.type,y=z.tax,fill=para.type))+geom_boxplot()+theme(axis.text.x=element_text(angle=90,vjust=0.5))+xlab("Parasite type")+ylab("Standard effect size of mean pairwise\nphylogenetic distance between hosts")+facet_wrap(~host.orders)+scale_fill_manual(name="Parasite\ntype",labels=c("Arthropod","Bacteria","Helminth","Protozoa","Virus"),values=gg_color_hue(5)[c(2,3,1,5,4)])
+```
+
+Fig. S2: The patterns for standard effect size of mean pairwise PD of all host species is broadly reflected in the patterns of specific host orders. For viruses infecting only one host order, the carnivore host group is particularly associated with specialist viruses.
+
+```{r, echo=F}
+nri7<-nri6[which(nri6$n.modes==1),]
+nri7$tmode<-"TBA"
+for (i in 1:dim(nri7)[1]){
+  if (nri7$close[i]==1){nri7$tmode[i]<-"Close"}
+  if (nri7$nonclose[i]==1){nri7$tmode[i]<-"Envir"}
+  if (nri7$intermediate[i]==1){nri7$tmode[i]<-"Complex"}
+  if (nri7$vector[i]==1){nri7$tmode[i]<-"Vector"}
+}
+ggplot(nri7,aes(x=tmode,y=z.tax,fill=tmode))+geom_boxplot()+theme(axis.text.x=element_text(angle=90,vjust=0.5))+xlab("Transmission mode")+ylab("Standard effect size of mean pairwise\nphylogenetic distance between hosts")+facet_wrap(~host.orders)+scale_fill_manual(name="Transmission\nmode",values=gg_color_hue(4)[c(1,2,3,4)])
+```
+
+Fig. S3: Standard effect size for mean pairwise PD stratified by host order and parasite transmission mode. Parasites affecting only primates and ungulates do not exhibit differences in specialism/generalism due to parasite transmission mode. The carnivore-exclusive parasites show a similar trend to the main result (Figs. 1 & 2).
+
+###Parasite transmission mode as a predictor of span and aggregation of hosts in the mammalian phylogeny
+
+```{r, echo=F, warning=F, message=F}
+gg.disp$ParasiteCorrectedName<-"tbd"
+for (i in 1:dim(gg.disp)[1]){
+  idx<-as.integer(rownames(gg.disp)[i])
+  gg.disp$ParasiteCorrectedName[i]<-myMaxD$ParasiteCorrectedName[idx]
+}
+gg.disp<-merge(gg.disp,ptrans,by="ParasiteCorrectedName")
+gg.disp$tmode<-"mixed"
+for (i in 1:dim(gg.disp)[1]){
+  if (gg.disp$close[i]==1&gg.disp$nonclose[i]==0&gg.disp$vector[i]==0&gg.disp$intermediate[i]==0){gg.disp$tmode[i]<-"close"}
+  if (gg.disp$close[i]==0&gg.disp$nonclose[i]==1&gg.disp$vector[i]==0&gg.disp$intermediate[i]==0){gg.disp$tmode[i]<-"nonclose"}
+  if (gg.disp$close[i]==0&gg.disp$nonclose[i]==0&gg.disp$vector[i]==1&gg.disp$intermediate[i]==0){gg.disp$tmode[i]<-"vector"}
+  if (gg.disp$close[i]==0&gg.disp$nonclose[i]==0&gg.disp$vector[i]==0&gg.disp$intermediate[i]==1){gg.disp$tmode[i]<-"intermediate"}
+}
+ggplot(gg.disp,aes(span.z,mntd2span.z,colour=my.color))+geom_point()+facet_wrap(~tmode,nrow=2)+xlab("Span: Standard effect size for maximum pairwise PD")+ylab("Aggregation: Standard effect size for ratio of\nmean minimum pairwise PD to maximum pairwise PD")+theme(legend.position="none")+geom_segment(aes(x=-2,xend=2,y=-2,yend=-2),colour="gray50",size=0.2)+geom_segment(aes(x=2,xend=2,y=-2,yend=2),colour="gray50",size=0.2)+geom_segment(aes(x=-2,xend=2,y=2,yend=2),colour="gray50",size=0.2)+geom_segment(aes(x=-2,xend=-2,y=-2,yend=2),colour="gray50",size=0.2)+theme(panel.margin=grid::unit(0.5,"cm"))+scale_color_manual(values=gg_color_hue(5)[c(4,2,5,3,1)])
+```
+
+Figure S4: Standard effect sizes for span and aggregation of hosts of each parasite, grouped by parasite transmission mode (including 'mixed' for parasites with multiple transmission modes) and colored by parasite type (same color scheme as the complementary Fig. 4, main text).
+
+Each transmission mode group contains a majority of parasites species whose standard effect sizes for span and aggregation are not different those of equivalent random host sets. All groups contain some parasites that have a smaller span than expected by chance and contain some parasites that exhibit patterns of host species phylogenetic aggregation. Patterns are relatively similar across all groups. 
+
+
+ 
+
+###Summary of negative binomial GLMs with predictor variables selected from: evolutionary distinctiveness (ed), terminal branch length (tbl) and number of host records in GMPD (n.records), and response variable number of parasite species per host species (n.para)
+
+```{r, echo=F, eval=T}
+library(MASS)
+VMR<-var(H.metrics$n.para)/mean(H.metrics$n.para)
+m.ed<-glm.nb(n.para~ed,data=H.metrics,link=log,maxit=100)
+m.bl<-glm.nb(n.para~tbl,data=H.metrics,link=log,maxit=100)
+m.ed2<-glm.nb(n.para~ed+n.records,data=H.metrics,link=log,maxit=100)
+m.bl2<-glm.nb(n.para~tbl+n.records,data=H.metrics,link=log,maxit=100)
+
+summary(m.ed)
+summary(m.bl)
+summary(m.ed2)
+summary(m.bl2)
+
+```
+
+Table S2: Set of generlized linear negative binomial models used to explore the effect of evolutionary distinctiveness (ed), terminal branch length (tbl), and number of host species records in the GMPD (n.records) on the number of parasite species per host species (n.para), using the `glm.nb` formula in the `MASS` package in R. 
+
+The main effect in these models (ed or tbl) is only significant for ed when used without controlling for the number of host records. In this case thspredictor variable is only significant for evolutionary disctinctiveness without controlling for number of host records. In this model, the estimate for the evolutionary distinctiveness (ed) covariate is -0.015644. Given the log link function, this may be interpreted as: for each unit change in ed (measured in millions of years) there is a reduction in parasite species richness by exp(-0.015644)=0.984$\approx$1 parasite.
+
+
+
+```{r, echo=F, eval=F}
+###Lack of association between host evolutionary distinctiveness and number of parasite species is exhibited across host orders.
+
+ho.ed<-ggplot(H.metrics,aes(x=as.factor(n.para),y=ed))+geom_boxplot()+facet_wrap(~order)+theme(axis.text.x=element_text(angle=90,hjust=1))+scale_x_discrete(breaks=seq(0,130,10))+xlab("Number of parasite species per host species")+ylab("Host evolutionary\ndistinctiveness")
+ho.bl<-ggplot(H.metrics,aes(x=as.factor(n.para),y=tbl))+geom_boxplot()+facet_wrap(~order)+theme(axis.text.x=element_text(angle=90,hjust=1))+scale_x_discrete(breaks=seq(0,130,10))+xlab("Number of parasite species per host species")+ylab("Host terminal\nbranch length")
+grid.arrange(ho.ed,ho.bl,ncol=1)
+
+m.ed.order<-glm.nb(n.para~ed*order*n.records,data=H.metrics,link=log,maxit=100)
+summary(m.ed.order)
+#When separately inspecting the relationship between evolutionary distinctiveness and number of parasite species per host species within host orders (carnivores, primates, ungulates) there is no significant relationship in any host order. 
+```
+
+
+
+###ALTERNATIVE COMMUNITY MATRIX
+uses citations...
+```{r}
+citation.grabber<-function(comm,d){
+  comm.alt<-comm
+  for (i in 1:dim(comm)[1]){
+    for (j in 1:dim(comm)[2]){
+      if (comm[i,j]!=0){
+        this.para<-rownames(comm)[i]
+        this.host<-colnames(comm)[j]
+        idx.para<-which(d$ParasiteCorrectedName==this.para)
+        idx.host<-which(d$HostCorrectedName==this.host)
+        idx<-intersect(idx.para,idx.host)
+        tmp<-d[idx,]
+        comm.alt[i,j]<-length(unique(tmp$Citation))
+        return(comm.alt)
+      }
+    }
+  }
+}
+
+commCit<-citation.grabber(comm,d)
+
+```
+
+```{r, echo=F, eval=F}
+nriCit<-ses.mpd(commCit,phydist.mini,null.model="independentswap",runs=1000)#change back to 1000!
+```
+
+```{r, echo=F, warning=F}
+# prep to merge with other dataframe that has other parasite traits
+#nri<-nri[complete.cases(nri),]  # THIS REMOVES SINGLETON PARASITES (ONLY ONE HOST) SINCE MPD STUFF IS NA
+nri$ParasiteCorrectedName<-rownames(nri)
+nri<-merge(nri,ptrans,by="ParasiteCorrectedName")
+
+ptype<-read.csv("GMPD_parasite_taxonomy_2016-11-28.csv",header=T)
+ptype<-subset(ptype,select=c("ParasiteCorrectedName","ParType"))
+ptype<-ptype[!duplicated(ptype),]
+nri<-merge(nri,ptype,by="ParasiteCorrectedName")
+
+#remove rare parasite types
+nri4<-nri[-which(nri$ParType %in% c("Fungus","Prion")),]#c("Fungus","Prion")
+
+nri4$n.modes<-rowSums(cbind(nri4$close,nri4$nonclose,nri4$vector,nri4$intermediate))
+nri6<-nri4
+names(nri6)[which(names(nri6)=="ParasiteCorrectedName")]<-"para.name"
+names(nri6)[which(names(nri6)=="ParType")]<-"para.type"
+
+nri6$para.name<-as.character(nri6$para.name)
+
+nri6<-nri6[complete.cases(nri6),]
+
+
+nri.flat<-data.frame(para.name=character(),ntaxa=integer(),mpd.obs.z=numeric(),mpd.obs.p=numeric(),para.type=character(),tmode=character(),stringsAsFactors=FALSE)
+k<-1
+for (i in 1:dim(nri6)[1]){
+  if (nri6[i,"close"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"close";k<-k+1}
+  if (nri6[i,"nonclose"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"nonclose";k<-k+1}
+  if (nri6[i,"vector"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"vector";k<-k+1}
+  if (nri6[i,"intermediate"]==1){nri.flat[k,"para.name"]<-nri6[i,"para.name"];nri.flat[k,"ntaxa"]<-nri6[i,"ntaxa"];nri.flat[k,"mpd.obs.z"]<-nri6[i,"mpd.obs.z"];nri.flat[k,"mpd.obs.p"]<-nri6[i,"mpd.obs.p"];nri.flat[k,"para.type"]<-as.character(nri6[i,"para.type"]);nri.flat[k,"tmode"]<-"intermediate";k<-k+1}
+}
+
+```
+
+Across all parasites, infected hosts tend to be more related than expected by chance, indicated by negative z-scores for mean pairwise PD between hosts (Fig. 1, global median z-score=-1.1). However, while 96% of parasites exhibit negative z-scores (trending to more specialist than expected by chance), only 16% of parasites have significantly negative z-scores. No parasites were found to have significantly positive z-scores.
+
+```{r, echo=FALSE, warning=F, message=F}
+library(ggplot2)
+nri.flat$para.type<-as.factor(nri.flat$para.type)
+nri.flat$tmode<-as.factor(nri.flat$tmode)
+nri.flat<-nri.flat[complete.cases(nri.flat),]
+#order factors in z score order for plotting
+ag.para.z<-aggregate(nri.flat$mpd.obs.z,by=list(nri.flat$para.type),FUN=mean)
+ag.para.z<-ag.para.z[order(ag.para.z$x,decreasing=T),]
+nri.flat$para.type<-factor(nri.flat$para.type,ag.para.z$Group.1)
+ag.tmode.z<-aggregate(nri.flat$mpd.obs.z,by=list(nri.flat$tmode),FUN=mean)
+ag.tmode.z<-ag.tmode.z[order(ag.tmode.z$x,decreasing=F),]
+nri.flat$tmode<-factor(nri.flat$tmode,ag.tmode.z$Group.1)
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+global.median.z<-median(nri6$mpd.obs.z,na.rm=T)
+
+ggplot(nri.flat, aes(x=para.type, y=mpd.obs.z, fill=tmode)) + geom_boxplot(notch=T) + theme(axis.text.x  = element_text(angle=90, vjust=0.5)) + scale_fill_discrete(name="Transmission\nmode",labels=c("Close","Complex","Vector","Envir"))+xlab("Parasite type")+ylab("Standard effect size of mean\npairwise PD between hosts")+ylim(c(-5,1))+geom_hline(yintercept=global.median.z,colour="black")
+
+#explanation for horn-shaped boxes: http://r.789695.n4.nabble.com/Strange-horns-on-notched-box-plots-td858004.html
+```
+
+
+```{r}
+#Charlie's idea...
+load("get_d4altnull.Rda")
+a<-subset(d,select=c("ParasiteCorrectedName","HostCorrectedName","ParType","Citation"))
+a<-a[duplicated(a),]
+a<-droplevels(a)
+
+idx1<-which(d$HostCorrectedName=="Vulpes_vulpes")
+idx2<-which(d$ParasiteCorrectedName=="Alaria alata")
+idx<-intersect(idx1,idx2)
+
+qq<-d[idx,]
+
+```
