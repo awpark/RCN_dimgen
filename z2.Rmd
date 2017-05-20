@@ -54,7 +54,7 @@ treelist=read.nexus("WR_2005_ST.txt")
 #best dates
 mtree=treelist[[1]]
 #dist matrix
-phydist<-cophenetic(mtree)
+phydist<-cophenetic.phylo(mtree) #or can use generic cophenetic
 #which hosts are in the parasite database
 d<-read.csv("GMPD_main_2016-11-28.csv",header=T)
 d<-subset(d,HostEnvironment=="terrestrial")
@@ -720,7 +720,7 @@ zzz<-nuller(altNull,a,phydist.mini)
 ```
 
 ```{r}
-load(get_altnri.Rda)
+load("get_altnri.Rda")
 ```
 
 
@@ -736,4 +736,11 @@ grid.arrange(plotS6a,plotS6b, nrow = 2)
 
 Fig. S6: The standard effect size measures for mean pairwise phylogenetic distance are highly correlated between the main analysis and supplementary analysis. Specialist parasites of the main analysis are even more highly specific in the supplementary analysis (top panel). For the parasites that were as specific as expected by chance in the original analysis, many of them are considered extremely host specific in the supplementary analysis.
 
+```{r}
+zz<-inner_join(zzz,nri,by="ParasiteCorrectedName") %>% as_tibble
+zz %<>% mutate(ParType=as.character(ParType))
+zz %<>% select(ParasiteCorrectedName,newZ,ParType,close,nonclose,vector,intermediate)
+zz %<>% gather(c(close,nonclose,vector,intermediate),key=tmode,value=exhibited) %>% filter(exhibited==1 & ParType %in% c("Arthropod","Bacteria","Helminth","Protozoa","Virus")) %>% select(-exhibited)
 
+ggplot(zz, aes(x=ParType, y=newZ, fill=tmode)) + geom_boxplot(notch=F) + theme(axis.text.x  = element_text(angle=90, vjust=0.5)) + scale_fill_discrete(name="Transmission\nmode",labels=c("Close","Complex","Vector","Envir"))+xlab("Parasite type")+ylab("Standard effect size of mean\npairwise PD between hosts")+geom_hline(yintercept=global.median.z,colour="black")#+ylim(c(-5,1))
+```
