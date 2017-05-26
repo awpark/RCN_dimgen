@@ -1,0 +1,45 @@
+---
+title: "ses.mpd weighting explored"
+author: "Andrew Park"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+set.seed(123) # for repro
+g<-matrix(rpois(144,2),nrow=12) # col=hosts(12),row=para(12)
+
+```
+
+A hypothetical matrix with parasites as rows, hosts as columns, and cells referring to number of HxP records
+```{r}
+g
+```
+
+According to help file, this is the weighting applied to host PD metrics
+```{r}
+w<-t(g) %*% g # a weighting - to be explained
+w
+```
+
+This is the abundance of each host
+```{r}
+colSums(g) # host abundances
+```
+
+This is the correlation of (x) the pairwise abundances of hosts and (y) the weighting applied
+```{r}
+j.abund<-NULL # joint abundances of pairs of hosts
+for (i in 1:11){
+  for (j in (i+1):12){
+    j.abund<-c(j.abund,sum(g[,i],g[,j]))
+  }
+}
+
+plot(j.abund,w[lower.tri(w)])
+```
+
+So I guess this weighting is an approximation to the pairwise abundances of hosts. 
+
+
