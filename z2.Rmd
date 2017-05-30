@@ -90,11 +90,12 @@ phydist.mini<-phydist.mini[order(rownames(phydist.mini)),order(rownames(phydist.
 ```
 
 ```{r, echo=F, eval=F}
-nri<-ses.mpd(comm,phydist.mini,null.model="independentswap",runs=1000)#change back to 1000!
+nri<-ses.mpd(comm,phydist.mini,null.model="independentswap",runs=1000,abundance.weighted=F)#change back to 1000!
 ```
 
 ```{r, echo=F}
-load("get_nri.Rda")
+#load("get_nri.Rda")
+load("get_nriABUND.Rda")
 ```
 
 ```{r, echo=F, warning=F}
@@ -249,7 +250,7 @@ p1<-sjp.grpfrq(nri6$mpd.obs.z,
            intr.var.labels = rep(c("0", "1"),5), 
            type = "boxplot",ylim=c(-6,2),
            title="Close",
-           prnt.plot=F)
+           prnt.plot=T)
 
 p2<-sjp.grpfrq(nri6$mpd.obs.z,
            nri6$para.type,
@@ -640,107 +641,22 @@ summary(m.ed.order)
 
 ###Aternative null model
 
-When using null models to generate standard effect sizes for mean pairwise phylogenetic distance, it is necessary to make choices regarding the sampling frequency of each host species. In the main text, we use the number of host records in GMPD as the sampling frequency. Here, we explore the effect of potential bias associated with commonly-studied hosts appearing in GMPD multiple times per parasite species and per citation. In other words, in some published studies, a given host parasite interaction may result in several GMPD records (stratified by host age, host sex or distinct geographic samples). Here, we only retain unique instances of host species, parasite species and citation so that such stratified cases are recorded only once. 
+The main null model implemented in the main text results randomizes the matrix of host-parasite associations conserving margin totals of the presence/absence matrix and weighting phylogenetic distances by the relative abundances of the chosen host pair. The conservation of matrix structure and integration of host species biases in the number of records in the database renders this null towards conservative. Here we contrast with 
 
 
 ```{r}
-#Charlie's idea...
-library(magrittr)
 library(dplyr)
-library(tibble)
-load("get_d4altnull.Rda")
-a<-subset(d,select=c("ParasiteCorrectedName","HostCorrectedName","ParType","Citation"))
-a<-a[!duplicated(a),]
-a<-droplevels(a)
-a %<>% as_tibble
-
-t1<-table(d$HostCorrectedName) %>% as_tibble
-t2<-table(a$HostCorrectedName) %>% as_tibble
-t1t2<-inner_join(t1,t2,by="Var1")
-t1t2 %<>% mutate(f1=n.x/sum(n.x))
-t1t2 %<>% mutate(f2=n.y/sum(n.y))
-t1t2 %>% filter(f1<1) %>% ggplot(.)+geom_point(aes(f1,f2))+geom_abline(intercept=0,slope=1,col="purple")
-
-t1t2 %>% filter(f1<0.02) %>% ggplot(.)+geom_point(aes(f1,f2))+geom_abline(intercept=0,slope=1,col="purple")
-```
-Fig. S5: Host frequency in the main analysis (f1) and in this supplementary analysis (f2). Disproportionately frequent hosts in the main analysis are relatively less frequent in the supplementary analysis. The purple line shows the 1-to-1 relationship between frequencies.                                                                     
-
-```{r}
+library(magrittr)
 load("get_nri.Rda")
-load("get_phydistmini.Rda")
-
-altNull<-nri %>% filter(ntaxa>1) %>% select(ParasiteCorrectedName,ntaxa,mpd.obs,mpd.obs.z) %>% as_tibble
-
-nuller<-function(df_sr,df_cit,phydist_matrix){
-  #runs an alternate null model picking
-  #hosts from list of unique H,P,citation
-  
-  #arguments1: df_sr=data.frame of parasite sp (col1)
-  #and host richness (col2)
-  #arguments2: df_cit=data.frame of unique
-  #H,P,citation records
-  #arguments3: phydist_matrix=cophenetic matrix
-  #of host phylo dists
-  #arguments4: rep number (defaults to 10)
-  
-  #returns: the original df_sr with standard effect size for mean
-  #pairwise phylo dist column appended
-  
-  df_cit$HostCorrectedName %<>% as.character
-  df_sr$av<-(-1) #dummy
-  df_sr$sd<-(-1) #dummy
-
-  for (i in 1:dim(df_sr)[1]){
-    pdVals<-list()
-    for (rep in 1:1000){#how many reps in null model
-      n.hosts.target<-df_sr$ntaxa[i]
-      n.hosts.sofar<-0
-      sample.hosts<-NULL
-      while(n.hosts.sofar<n.hosts.target){
-        sample.hosts<-c(sample.hosts,sample_n(df_cit,1)$HostCorrectedName)
-        sample.hosts <- unique(sample.hosts)
-        n.hosts.sofar<-length(sample.hosts)
-      }
-    pdMtrx<-phydist.mini[sample.hosts,sample.hosts]
-    pdVals[[rep]]<-mean(pdMtrx[upper.tri(pdMtrx)])
-    }
-    av_pdVals<-mean(unlist(pdVals))
-    sd_pdVals<-sd(unlist(pdVals))
-    df_sr$av[i]<-av_pdVals
-    df_sr$sd[i]<-sd_pdVals
-  }
-  df_sr %<>% mutate(newZ=(mpd.obs-av)/sd)
-  
-  return(df_sr)
-}
-```
-
-```{r, eval=F}
-zzz<-nuller(altNull,a,phydist.mini)
-```
-
-```{r}
-load("get_altnri.Rda")
+nri_01<-nri
+nri_01$para.name<-rownames(nri_01)
+load("get_nriABUND.Rda")
+nri_abund<-nri
+nri_abund$para.name<-rownames(nri_abund)
+corNRI<-merge(nri_01,nri_abund,by="para.name")
+P.type.binom$para.name<-P.type.binom$ParasiteCorrectedName
+corNRI<-merge(corNRI,P.type.binom)
+corNRI %>% filter(ntaxa.x>1 & ParType!="Fungus" & ParType!="Prion") %>% droplevels %>% ggplot(.,aes(x=mpd.obs.z.x,y=mpd.obs.z.y,col=ParType))+geom_point()+geom_smooth(method="lm",fill=NA)+geom_abline(slope=1,intercept=0)+xlab("z (01)")+ylab("z (abund)")+scale_color_manual(name="Parasite\ntype",values=gg_color_hue(5)[c(2,3,1,5,4)])
 ```
 
 
-```{r}
-library(ggplot2)
-library(gridExtra)
-
-plotS6a <- ggplot(zzz,aes(mpd.obs.z,newZ))+geom_point()+geom_smooth()
-plotS6b <- zzz %>% filter(mpd.obs.z>-2) %>% ggplot(.,aes(mpd.obs.z,newZ))+geom_point()+geom_smooth()
-
-grid.arrange(plotS6a,plotS6b, nrow = 2)
-```
-
-Fig. S6: The standard effect size measures for mean pairwise phylogenetic distance are highly correlated between the main analysis and supplementary analysis. Specialist parasites of the main analysis are even more highly specific in the supplementary analysis (top panel). For the parasites that were as specific as expected by chance in the original analysis, many of them are considered extremely host specific in the supplementary analysis.
-
-```{r}
-zz<-inner_join(zzz,nri,by="ParasiteCorrectedName") %>% as_tibble
-zz %<>% mutate(ParType=as.character(ParType))
-zz %<>% select(ParasiteCorrectedName,newZ,ParType,close,nonclose,vector,intermediate)
-zz %<>% gather(c(close,nonclose,vector,intermediate),key=tmode,value=exhibited) %>% filter(exhibited==1 & ParType %in% c("Arthropod","Bacteria","Helminth","Protozoa","Virus")) %>% select(-exhibited)
-
-ggplot(zz, aes(x=ParType, y=newZ, fill=tmode)) + geom_boxplot(notch=F) + theme(axis.text.x  = element_text(angle=90, vjust=0.5)) + scale_fill_discrete(name="Transmission\nmode",labels=c("Close","Complex","Vector","Envir"))+xlab("Parasite type")+ylab("Standard effect size of mean\npairwise PD between hosts")+geom_hline(yintercept=global.median.z,colour="black")#+ylim(c(-5,1))
-```
