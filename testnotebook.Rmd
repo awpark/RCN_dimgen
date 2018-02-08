@@ -1,0 +1,47 @@
+---
+title: "tree shape and null distribution (PD)"
+output:
+  html_notebook: default
+  html_document: default
+---
+
+```{r}
+library(ape)
+library(apTreeshape)
+library(e1071)
+library(ggplot2)
+
+#mammal supertree
+treelist=read.nexus("WR_2005_ST.txt")
+#best dates
+tree=treelist[[1]]
+
+#sample tree size
+ss <- 400
+
+results <- NULL
+for (i in 1:500){
+#sample tree (true number of tips=5020)
+tree2 <- drop.tip(tree,sample(1:5020,(5020-ss),replace=F))
+
+#get (normalized) colless index
+col <- invisible(colless(as.treeshape(tree2,model="yule"),norm="yule"))
+
+#generate distribution for mpd
+phy.dist <- cophenetic.phylo(tree2)
+q <- as.vector(phy.dist[lower.tri(phy.dist)])
+
+# obtain skewness
+s <- skewness(q)
+
+#store
+results<-rbind(results,c(col,s))
+}
+
+plot(results[,1],results[,2])
+results <- as.data.frame(results)
+names(results) <- c("colless","skewness")
+ggplot(results,aes(x=colless,y=skewness))+geom_point()+geom_smooth()
+
+```
+
